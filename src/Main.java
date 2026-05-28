@@ -24,19 +24,17 @@ public class Main {
 			} else if (opcao == 2) {
     			System.out.println("Título: ");
     			String titulo = sc.nextLine();
+    			System.out.println("Ano: ");
+    			int ano = sc.nextInt();
     
-    			// TODO: Pede o ano ao utilizador (lê com sc.nextInt())
-    			// int ano = sc.nextInt();
-    
-    			// NOTA: Limpa o buffer depois de leres o ano para evitar loops no menu
     			sc.nextLine(); 
     
-    			// TODO: Atualiza o construtor para passar também o ano
-    			Filme f = new Filme(titulo); 
+    			
+    			Filme f = new Filme(titulo, ano); 
     			v.adicionarFilme(f);
 			} else if (opcao == 3) {
 				// testar primeiro se há filmes para apagar
-				if (1 == 1) { // sustituir
+				if ( v.totalFilmes() == 0 ) { // sustituir
 					System.out.println("Não há filmes para apagar.");
 				} else {
 					System.out.println("Número do filme a apagar: ");
@@ -51,7 +49,7 @@ public class Main {
 
 			} else if (opcao == 4) {
 				// testar primeiro se há filmes para editar, depois acrescentar o ano
-				if (1 == 1) { // substituir
+				if (v.totalFilmes() == 0) { // substituir
 					System.out.println("Não há filmes para editar.");
 				} else {
 					System.out.print("Número do filme a editar: ");
@@ -60,7 +58,8 @@ public class Main {
 					if (num >= 1 && num <= v.totalFilmes()) {
 						System.out.println("Novo titulo: ");
 						String novoTitulo = sc.nextLine();
-						v.editarFilme(num, novoTitulo);
+						int novoAno = sc.nextInt();
+						v.editarFilme(num, novoTitulo, novoAno);
 					} else {
 						System.out.println("Numero inválido.");
 					}
